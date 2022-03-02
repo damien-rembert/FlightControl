@@ -1,20 +1,20 @@
 package FlightControl.domain;
 
 public class Airplane {
-    private String name;
+    private String id;
     private int capacity;
 
-    public Airplane(String name, int capacity) {
-        this.name = name;
+    public Airplane(String id, int capacity) {
+        this.id = id;
         this.capacity = capacity;
-    };
-
-    public String getName() {
-        return this.name;
     };
 
     public int getCapacity() {
         return this.capacity;
+    }
+
+    public String toString() {
+        return (id + " (" + capacity + " capacity)");
     }
     
 }
