@@ -1,7 +1,5 @@
 package FlightControl.domain;
 
-import java.lang.reflect.Constructor;
-
 public class Airplane {
     private String name;
     private int capacity;
