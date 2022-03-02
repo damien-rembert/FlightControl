@@ -1,12 +1,31 @@
 package FlightControl.logic;
 
+import java.util.HashMap;
+
+import FlightControl.domain.Airplane;
+import FlightControl.domain.Airport;
+import FlightControl.domain.Flight;
+
 public class FlightControl {
+    private HashMap<String, Airplane> planes;
+    private HashMap<String, Airport> airports;
+    private HashMap<String, Flight> flights;
 
+    public FlightControl() {
+        this.planes = new HashMap<>();
+        this.airports = new HashMap<>();
+        this.flights = new HashMap<>();
+    }
 
-    // This class uses hash maps to store the data (as there are multiple planes, places and flights). 
-    // The use of hash maps allows us to access the data in the objects quickly using only a string (the id) as a key. It also avoids the creation of duplicate items.
-    // The method addAiplane does not return anything but requires two arguments, that are required by the Airplane constructor. This constructor is called and the two arguments are passed on to it. The airplane object is added to the planes hash map.
-    // The addFlight method works very much the same way but checks if the Place object arguments are already present in its places hash map. If not, they are added to it.
-    // As a key for the flight, when adding it to the hash map, the flight toString is called and used.
+    public void addPlane(String id, int capacity) {
+        this.planes.putIfAbsent(id, (new Airplane(id, capacity)));
+    };
+
+    public void addFlight(String planeId, String airportDep, String airportArr) {
+        this.airports.putIfAbsent(airportDep, new Airport(airportDep));
+        this.airports.putIfAbsent(airportDep, new Airport(airportDep));
+        Flight aFlight = new Flight(this.airports.get(airportDep), this.airports.get(airportArr), this.planes.get(planeId));
+        this.flights.putIfAbsent(aFlight.toString(), aFlight);
+    }
     
 }
